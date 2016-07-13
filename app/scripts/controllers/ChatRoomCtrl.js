@@ -1,9 +1,13 @@
 (function() {
-  function ChatRoomCtrl(Firebase) {
-    this.rooms = Firebase.getRooms();
+  function ChatRoomCtrl(Room) {
+    this.rooms = Room.all;
+    this.currentRoom = null;
+    this.setCurrentRoom = function(room) {
+      this.currentRoom = room;
+    };
   }
 
   angular
   .module('blocChat')
-  .controller('ChatRoomCtrl', ['Firebase', ChatRoomCtrl]);
+  .controller('ChatRoomCtrl', ['Room', ChatRoomCtrl]);
 })();

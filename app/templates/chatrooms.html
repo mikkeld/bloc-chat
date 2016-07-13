@@ -1,7 +1,16 @@
 <h1 class="headline inline">Bloc Chat</h1>
-<button type="submit" class="btn btn-default inline top">New room</button>
+<div class="row">
+  <div class="col-md-4 chatroom">
+    <button type="submit" class="btn btn-default inline">New room</button>
+    <ul>
+      <li ng-repeat="room in chatroom.rooms" ng-click="chatroom.setCurrentRoom(room)">{{room.name}}</li>
+    </ul>
+    <p>{{chatroom.currentRoom}}</p>
+  </div>
 
-<h2>{{chatroom.room.test}}</h2>
-<ul>
-  <li ng-repeat="room in chatroom.rooms">{{room.name}}</li>
-</ul>
+  <div class="col-md-8">
+    <ul ng-repeat="message in chatroom.currentRoom.messages">
+      <li>{{message.body}}</li>
+    </ul>
+  </div>
+</div>
